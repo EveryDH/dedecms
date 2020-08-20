@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<document>
+{dede:arclist typeid='0' row='200'} 
+<item>
+<key></key> 
+<display>
+<url><![CDATA[[field:arcurl/]]]></url>
+<title>[field:title/]</title>
+<date>[field:pubdate function="MyDate('Y-m-d',@me)"/]</date>
+<content>[field:info/]...</content>
+</display>
+</item>
+{/dede:arclist}
+</document>

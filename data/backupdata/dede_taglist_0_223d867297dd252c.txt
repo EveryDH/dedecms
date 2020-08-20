@@ -1,0 +1,5 @@
+INSERT INTO `dede_taglist` VALUES('1','1','0','1','发布');
+INSERT INTO `dede_taglist` VALUES('2','5','0','3','手机');
+INSERT INTO `dede_taglist` VALUES('3','7','0','5','融资');
+INSERT INTO `dede_taglist` VALUES('4','11','0','8','转基因');
+INSERT INTO `dede_taglist` VALUES('4','12','0','8','转基因');

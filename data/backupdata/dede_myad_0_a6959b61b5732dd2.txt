@@ -1,0 +1,6 @@
+INSERT INTO `dede_myad` VALUES('1','0','0','index_baodao','首页右侧上 投稿','0','1563514589','1566106589','<a href=\"/a/guanyu/tougaoxuzhi/\"><img src=\"/templets/default/images/img3.jpg\" alt=\"投稿须知\"></a>','');
+INSERT INTO `dede_myad` VALUES('2','0','0','index_001','首页横幅广告位','0','1563514878','1566106878','<a href=\"/\"><img src=\"/templets/default/images/1_0649062591.jpg\" alt=\"\"></a>','');
+INSERT INTO `dede_myad` VALUES('3','0','0','index_r01','首页-右广告位01','0','1563514987','1566106987','<a href=\"#\" target=\"_blank\"><img src=\"/templets/default/images/1_1043456401.jpg\" alt=\"\"></a>','');
+INSERT INTO `dede_myad` VALUES('4','0','0','ad01','内页右侧通用广告位','0','1563515925','1566107925','<a href=\"\" title=\"\" target=\"_blank\"><img src=\"/templets/default/images/img17.jpg\" alt=\"\"></a>','');
+INSERT INTO `dede_myad` VALUES('5','0','0','artice_ad_03','内容页-广告位03','0','1563516432','1566108432','<a href=\"\" target=\"_blank\"><img src=\"/templets/default/images/artice_ad_03.jpg\" alt=\"\"></a>','');
+INSERT INTO `dede_myad` VALUES('6','0','0','artice_ad_01','内容页-文章内容底部','0','1563516583','1566108583','<a href=\"#\" target=\"_blank\"><img src=\"/templets/default/images/artice_ad_01.jpg\" alt=\"\"></a>','');

@@ -1,0 +1,1 @@
+ <a href='[field:id function='mbp_tag_url(@me)'/]' class='tagc[field:highlight /]'>[field:tag /]</a> 

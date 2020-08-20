@@ -1,0 +1,1 @@
+ <a href="[field:link/]" target="_blank"><span style="font-size:1.[field:count/]em">[field:tag /]</span></a>

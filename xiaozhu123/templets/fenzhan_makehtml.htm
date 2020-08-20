@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>分站更新向导</title>
+<!-- <link href="css/base.css" rel="stylesheet" type="text/css">
+ --><link rel="stylesheet" type="text/css" media="all" href="../include/calendar/calendar-win2k-1.css" title="win2k-1" />
+ <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="../include/calendar/calendar.js"></script>
+<script type="text/javascript" src="../include/calendar/calendar-cn.js"></script>
+<script language="javascript">
+function SelectTemplets(fname)
+{
+   var posLeft = 200;
+   var posTop = 300;
+   window.open("../include/dialog/select_templets.php?f="+fname, "poptempWin", "scrollbars=yes,resizable=yes,statebar=no,width=600,height=400,left="+posLeft+", top="+posTop);
+}
+</script>
+</head>
+<body>
+  <div class="container-full">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">分站更新向导</h3>
+      </div>
+      <div class="panel-body">
+        <form class="form-horizontal" name="form1" id='form1' method="post">
+        <input type="hidden" name="dopost" value="make">
+          <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">站点标题：</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="title" name="title" placeholder="示例：{地区名}仿站建站_{地区名}企业仿站开发QQ：3149518909" value="<?php echo $row['title']?>" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="keyword" class="col-sm-2 control-label">关键词：</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="keyword" name="keyword" placeholder="示例：{地区名}仿站建站,{地区名}企业仿站开发"  value="<?php echo $row['keyword']?>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="desc" class="col-sm-2 control-label">站点描述：</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" name="desc" id='desc' rows="3" placeholder="示例：7年专注于{地区名}仿站建站_{地区名}企业仿站开发_{地区名}实力织梦仿站二次开发！技术接单！ "><?php echo $row['desc']?></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="powerby" class="col-sm-2 control-label">版权信息：</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" name="powerby" id='powerby' rows="3" placeholder="如果留空，自动调用系统基本参数中的版权信息！"><?php echo $row['powerby']?></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="keyword" class="col-sm-2 control-label">列表模板：</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" style="width:200px;display: inline-block;" id="templet_index" name="templet_index" value="<?php echo $row['templet_index']?>">
+              <input type="button" name="set4" value="浏览..." class="btn btn-default" onClick="SelectTemplets('form1.templet_index');">
+            </div>
+          </div>
+           <div class="form-group">
+            <label for="position_index" class="col-sm-2 control-label">列表位置：</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="position_index" name="position_index" value="<?php echo $row['position_index']?>">
+            </div>
+          </div>
+           <div class="form-group">
+            <label for="keyword" class="col-sm-2 control-label">分站模板：</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" style="width:200px;display: inline-block;" id="templet" name="templet" value="<?php echo $row['templet']?>">
+              <input type="button" name="set4" value="浏览..." class="btn btn-default" onClick="SelectTemplets('form1.templet');">
+            </div>
+          </div>
+           <div class="form-group">
+            <label for="position_index" class="col-sm-2 control-label">保存位置：</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" style="width: 100px;display: inline-block;" id="position" name="position" value="<?php echo $row['position']?>">
+              <small style="margin-right: 10px">1.如需生成在网站根目录，这里填"/"即可！</small>
+              <small style="margin-right: 10px">2.手机版默认保存路径：/m<?php echo $row['position']?></small>
+              <small style="margin-right: 10px">3.手机版模板：<?php echo $row['templet_indexm']?>   <?php echo $row['templetm']?></small>
+              <small style="margin-right: 10px">4.<a href="https://www.lol9.cn/dedecj/2790.html" target="_blank">点击这里查看更多帮助</a></small>
+            </div>
+          </div>
+           <div class="form-group">
+            <label for="position_index" class="col-sm-2 control-label">URL形式：</label>
+            <div class="col-md-10">
+              <div class="radio">
+                <p>
+                <label>
+                  <input type="radio" name="urltype"  value="1" <?php echo $row['urltype']=='1'?"checked":""; ?>>
+                  html(示例： <?php echo $cfg_basehost.$row['position']?>beijing.html)
+                </label>
+                </p>
+                <p>
+                <label>
+                  <input type="radio" name="urltype"  value="0" <?php echo $row['urltype']=='0'?"checked":""; ?> >
+                  目录 (示例：<?php echo $cfg_basehost.$row['position']?>beijing/)
+                </label>
+                </p>
+              </div>
+            </div>
+          </div>
+           <div class="form-group">
+            <label for="position_index" class="col-sm-2 control-label">更新选项：</label>
+            <div class="col-md-10">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="makehtml" id="makehtml" value="pc" checked>
+                  PC
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="makehtml" id="makehtml" value="m">
+                  手机<small>(响应式网站无需更新！)</small>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success" name='act' value="save">保存设置</button>
+              <button type="button" class="btn btn-danger" onclick="add_ajax();">更新分站</button>
+            </div>
+          </div>
+        </form>
+        <div class="clearfix"></div>
+      <div id='mdv' style='width:100%;height:100px; margin-top: 50px;'> 
+        <div  style="width:400px;heigh:50px;margin:auto;">
+          <div class="progress active progress-striped" style=" display: none;" id="jdt">
+            <div id="progress-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
+             进行中
+            </div>
+          </div>
+          <div class="alert alert-success alert-dismissible fade in msg-box"  role="alert" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <div class="msg"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javaScript">
+    function add_ajax(){
+      $('.msg-box').hide();
+      getState('0');
+      $('#jdt').show();
+        $.ajax({
+            type: "POST",
+            url: "fenzhan_makehtml.php",
+            data: $('#form1').serialize()
+        });
+        return false;
+    }
+     function getState(e){
+        $.get("fenzhan_makehtml.php", {act:'getstate',id:e},
+            function(a){aginCallBack(a);
+            });
+     }
+     function aginCallBack(e){
+      var ae=e+"%";
+      $('#progress-bar').css('width',ae).html(ae);
+       if(e<99&&e>0){
+        setTimeout(function(){getState(e)},1000);
+       }else{
+        $('#jdt').hide(1,function(){
+          $('.msg-box').fadeIn();
+          $('.msg').html('更新完成！');
+          $('.progress-bar').html('0').css('width','0');
+        });
+       }
+     }
+    </script>
+</body>
+</html>

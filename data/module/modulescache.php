@@ -1,0 +1,20 @@
+<?php
+global $allmodules;
+$GLOBALS['allmodules']['0134207a3deaa2b3778175f26095cc0a']='0134207a3deaa2b3778175f26095cc0a.xml';
+$GLOBALS['allmodules']['0cce60bc0238aa03804682c801584991']='0cce60bc0238aa03804682c801584991.xml';
+$GLOBALS['allmodules']['1f35620fb42d452fa2bdc1dee1690f92']='1f35620fb42d452fa2bdc1dee1690f92.xml';
+$GLOBALS['allmodules']['533c5b843ded8752b9857cc7c8e5b455']='533c5b843ded8752b9857cc7c8e5b455.xml';
+$GLOBALS['allmodules']['572606600345b1a4bb8c810bbae434cc']='572606600345b1a4bb8c810bbae434cc.xml';
+$GLOBALS['allmodules']['5a849752f160afa167826c82706b5058']='5a849752f160afa167826c82706b5058.xml';
+$GLOBALS['allmodules']['606c658db048ea7328ffe1c7ae2a732f']='606c658db048ea7328ffe1c7ae2a732f.xml';
+$GLOBALS['allmodules']['72ffa6fabe3c236f9238a2b281bc0f93']='72ffa6fabe3c236f9238a2b281bc0f93.xml';
+$GLOBALS['allmodules']['8a7ca492cd648b842eeda2d5114779f0']='8a7ca492cd648b842eeda2d5114779f0.xml';
+$GLOBALS['allmodules']['a066d66d17529087d047991dad0d6ee8']='a066d66d17529087d047991dad0d6ee8.xml';
+$GLOBALS['allmodules']['acb8b88eb4a6d4bfc375c18534f9439e']='acb8b88eb4a6d4bfc375c18534f9439e.xml';
+$GLOBALS['allmodules']['acde4807379def06e6ee7947e6e77112']='acde4807379def06e6ee7947e6e77112.xml';
+$GLOBALS['allmodules']['b437d85a7a7bc778c9c79b5ec36ab9aa']='b437d85a7a7bc778c9c79b5ec36ab9aa.xml';
+$GLOBALS['allmodules']['cc8338b95a9c74b7ef64739f6d586efe']='cc8338b95a9c74b7ef64739f6d586efe.xml';
+$GLOBALS['allmodules']['d3cf7d981c1ca63f25c10605545bf8f2']='d3cf7d981c1ca63f25c10605545bf8f2.xml';
+$GLOBALS['allmodules']['d7c372e74c42830d895f98fffa79f25f']='d7c372e74c42830d895f98fffa79f25f.xml';
+$GLOBALS['allmodules']['fcd00dbb5a51d65aff6c248d221d8bcd']='fcd00dbb5a51d65aff6c248d221d8bcd.xml';
+?>

@@ -1,0 +1,1 @@
+<li><a href="[field:arcurl/]" target="_blank" title="[field:fulltitle/]">[field:global.cfg_city/][field:title/]</a> </li>

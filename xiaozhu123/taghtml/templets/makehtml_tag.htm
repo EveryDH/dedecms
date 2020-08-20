@@ -1,0 +1,171 @@
+
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>更新TAGS静态页</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body background='../images/allbg.gif' leftmargin='8' topmargin='8'>
+
+<div class="bodytitle">
+	<div class="bodytitleleft"></div>
+	<div class="bodytitletxt" style="padding-left:10px;">更新TAGS静态页</div>
+</div>
+<form name='form1' action="makehtml_tag.php?action=search" method="post" style="margin-bottom:6px;">
+<table width="98%" border="0" cellspacing="1" align="center" class="tbtitle" style="background:#CFCFCF;">
+
+<tr>
+  <td height="30" align="center" bgcolor="#Ffffff">
+<strong>搜索TAG：</strong><select name="search_type" style="height:22px; vertical-align:middle;">
+<option value='0' selected>模糊搜索</option>
+<option value='1'>精确搜索</option>
+     </select>
+    <input type="text" name="search_word" style="width:180px;height:22px; vertical-align:middle;"/>
+&nbsp;
+<input name="submit" type="submit" value="获取tags" class="np coolbg" />
+<small>(按TAG名称匹配结果，如果为空则获取所有TAG)</small>
+</td>
+</tr>
+</table>
+</form>
+<?php 
+$sql="select * from #@__tagindex {$addsql} order by tag asc"; 
+$dsql->Execute('al',$sql);
+$total = $dsql->GetTotalRow('al');
+if ($action == 'search') {
+    $str = '';
+    if (empty($search_word)) {
+        $str = "数据库共有{$total}条TAG标签记录";
+    } else {
+        $str = "【{$search_word}】:共搜索到{$total}条记录";
+    }
+?>
+<div style="margin:5px auto; width:98%;background:#fff; height:24px; line-height:24px;text-align:center;"><?php echo $str; ?></div>
+<?php 
+}
+?>
+<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D1DDAA" align="center">
+  <form name="form2" action="makehtml_tag_action_list.php" method="get" target='stafrm'>
+    <input type="hidden" name="sword" value="<?php echo $search_word;?>"/>
+    <input type="hidden" name="stype" value=""<?php echo $search_type;?>""/>
+    <tr> 
+      <td height="28" colspan="2" background='img/tbg.gif'>
+      	<table width="98%" border="0" cellpadding="0" cellspacing="0">
+          
+          <tr> 
+            <td width="30%" height="18"><strong>更新TAG列表HTML：</strong> </td>
+            <td width="70%" align="right">
+            	( By:六久阁织梦模板网 )
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td width="108" valign="top" bgcolor="#FFFFFF">选择TAG：</td>
+      <td width="377" valign="top" bgcolor="#FFFFFF"> 
+    <?php      
+	   echo "<select name='typeid' style='width:300px'>\r\n";
+       echo "<option value='0' selected='1'>更新所有TAG...</option>\r\n";
+       while($row=$dsql->GetObject('al')){       
+         echo "<option value='".$row->id."'>".$row->tag."</option>";
+	   }
+       echo "</select>";
+		?>
+      </td>
+    </tr>
+	<tr> 
+      <td height="20" valign="top" bgcolor="#FFFFFF">是否强制全部生成：</td>
+      <td height="20" valign="top" bgcolor="#FFFFFF">
+	  <input name="all" type="radio" class="np" value="1"  />
+     重新生成全部TAG列表  
+    <input type="radio" name="all" class="np" value="0" checked='1'/>
+     仅更新上次生成后有变化的TAG
+    </td>
+    </tr>
+
+    <tr>
+      <td height="20" valign="top" bgcolor="#FFFFFF">每次最大创建页数：</td>
+      <td height="20" valign="top" bgcolor="#FFFFFF"><input name="maxpagesize" type="text" id="maxpagesize" value="50" size="10">
+        个文件 </td>
+    </tr>
+    <tr>
+      <td height="20" valign="top" bgcolor="#FFFFFF">HTML生成提示：</td>
+      <td height="20" valign="top" bgcolor="#FFFFFF"> 
+      1、标签默认目录及url规则,可以在模块菜单【TAGS优化设置】里面配置<br/>
+      2、TAG地图生成,并不局限于TAG,也可以生成全站文章地图,只需添加相应的模板标签。
+	  </td>
+    </tr>
+	 <tr>
+      <td height="20" valign="top" bgcolor="#FFFFFF">模板文件路径：</td>
+      <td height="20" valign="top" bgcolor="#FFFFFF"> 
+      <?php 
+      $t_list = $cfg_templets_dir.'/'.$cfg_df_style.'/taglist.htm';
+      $t_index = $cfg_templets_dir.'/'.$cfg_df_style.'/tagindex.htm';
+      $t_map = $cfg_templets_dir.'/'.$cfg_df_style.'/tagmap.htm';
+      ?>
+      * TAG列表页模板文件：<?php echo $t_list; if(!file_exists($cfg_basedir.$t_list))echo ' <span style="color:red">(文件不存在)</span>';?><br>
+	  * TAG首页模板文件：<?php echo $t_index; if(!file_exists($cfg_basedir.$t_index))echo ' <span style="color:red">(文件不存在)</span>';?><br>
+      * TAG地图模板文件：<?php echo $t_map; if(!file_exists($cfg_basedir.$t_map))echo ' <span style="color:red">(文件不存在)</span>';?><br>
+	  </td>
+    </tr>
+	 <!--手机tag模版提示--->
+	  <tr>
+      <td height="20" valign="top" bgcolor="#FFFFFF">手机模板文件路径：</td>
+	 <td height="20" valign="top" bgcolor="#FFFFFF"> 
+	  <?php 
+      $t_list_m = $cfg_templets_dir.'/'.$cfg_df_style.'/taglist_m.htm';
+      $t_index_m = $cfg_templets_dir.'/'.$cfg_df_style.'/tagindex_m.htm';
+      $t_map_m = $cfg_templets_dir.'/'.$cfg_df_style.'/tagmap_m.htm';
+      ?>
+      * 手机TAG列表页模板文件：<?php echo $t_list_m; if(!file_exists($cfg_basedir.$t_list_m))echo ' <span style="color:red">(文件不存在)</span>';?><br>
+	  * 手机TAG首页模板文件：<?php echo $t_index_m; if(!file_exists($cfg_basedir.$t_index_m))echo ' <span style="color:red">(文件不存在)</span>';?><br>
+      * 手机TAG地图模板文件：<?php echo $t_map_m; if(!file_exists($cfg_basedir.$t_map_m))echo ' <span style="color:red">(文件不存在)</span>';?><br>
+	  </td>
+	  <!--手机模版提示结束-->
+    </tr>
+    <!--
+	-->
+    <tr> 
+	 <!--生成PCtag按钮开始-->
+      <td height="20" colspan="2" bgcolor="#FAFAF1" align="center">
+      	<input name="b112" type="button" class="coolbg np" value="生成TAG列表HTML" onClick="document.form2.action='makehtml_tag_action_list.php?dopost=makelist';document.form2.submit();" style="width:120px"> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="nic_b112" type="button" class="nbt" value="生成TAG首页HTML" onClick="document.form2.action='makehtml_tag_action_index.php';document.form2.submit();" style="width:120px">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="nic_b112" type="button" class="nbt" value="生成TAG地图XML" onClick="document.form2.action='makehtml_tag_sitemap.php';document.form2.submit();" style="width:120px">
+		<!--生成PCtag按钮结束-->
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<!--生成手机tag按钮开始-->
+		<input name="b112" type="button" class="coolbg np" value="生成手机TAG列表HTML" onClick="document.form2.action='makehtml_tag_action_list_m.php?dopost=makelist';document.form2.submit();" style="width:120px"> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="nic_b112" type="button" class="nbt" value="生成手机TAG首页HTML" onClick="document.form2.action='makehtml_tag_action_index_m.php';document.form2.submit();" style="width:120px">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="nic_b112" type="button" class="nbt" value="生成手机TAG地图XML" onClick="document.form2.action='makehtml_tag_sitemap_m.php';document.form2.submit();" style="width:120px">
+         <!--生成手机tag按钮结束-->      
+	  </td>
+    </tr>
+  </form>
+  <tr bgcolor="#E6F3CD"> 
+    <td height="20" colspan="2"> <table width="100%">
+        <tr> 
+          <td width="74%">进行状态： </td>
+          <td width="26%" align="right"> <script language='javascript'>
+            	function ResizeDiv(obj,ty)
+            	{
+            		if(ty=="+") document.all[obj].style.pixelHeight += 50;
+            		else if(document.all[obj].style.pixelHeight>80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+            	}
+            	</script>
+            [<a href='#' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='#' onClick="ResizeDiv('mdv','-');">缩小</a>] 
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td colspan="2" id="mtd">
+    	<div id='mdv' style='width:100%;height:350px;'> 
+        <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+      </div>
+	  </td>
+  </tr>
+</table>
+</body>
+</html>
+

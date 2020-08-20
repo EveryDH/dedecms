@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>系统配置参数</title>
+
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body background='images/allbg.gif' leftmargin='8' topmargin='8'>
+<div style="min-width:780px">
+ <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center">
+  <tr>
+   <td height="28" background="images/tbg.gif" style="padding-left:10px;"><h3>TAGS优化设置：</h3></td>
+  </tr>
+  
+  <tr>
+   <td height="24" bgcolor="#ffffff" align="left"><strong>参数填写说明：</strong><br/>1、TAGS目录名：所有TAG静态页的存放文件夹<br/>
+   2、TAG的链接样式共4种，如下（tag名:白菜 id:3）<br/>
+   &nbsp;&nbsp;{拼音}：<span style="color:red;">http:localhost/tag/{baicai}/index.html</span><br/>
+   &nbsp;&nbsp;{ID}：<span style="color:red;">http:localhost/tag/{3}/index.html</span><br/>
+   &nbsp;&nbsp;{拼音}.html：<span style="color:red;">http:localhost/tag/{baicai}.html</span><br/>
+   &nbsp;&nbsp;{ID}.html：<span style="color:red;">http:localhost/tag/{3}.html</span>
+   &nbsp;&nbsp; ID ：<span style="color:red;">http:localhost/{3}</span>
+   </td>
+  </tr>
+
+ </table>
+ <table width="98%" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px" bgcolor="#D6D6D6" align="center">
+  <tr>
+   <td height="28" align="right" background="images/tbg.gif" style="border:1px solid #cfcfcf;border-bottom:none;">  </td>
+  </tr>
+  <tr>
+   <td bgcolor="#FFFFFF" width="100%">
+    <?php
+       $tag_basedir=$dsql->GetOne("SELECT * FROM `#@__sysconfig` WHERE `varname`='cfg_tag_basedir'");
+       $tag_style = $dsql->GetOne("SELECT * FROM `#@__sysconfig` WHERE `varname`='cfg_tag_style'"); 
+      //添加手机tag目录的变量
+      $tag_basedir_m=$dsql->GetOne("SELECT * FROM `#@__sysconfig` WHERE `varname`='cfg_tag_basedir_m'");	  
+       //修改原来的判断if (empty($tag_basedir)|| empty($tag_style)) {exit('插件安装不完整！');}  
+      if (empty($tag_basedir)||empty($tag_basedir_m) || empty($tag_style)) {exit('插件安装不完整！');} 	   
+	 ?>
+   <form action="tags_config.php" method="post" name="form1">
+     <input type="hidden" name="dopost" value="save">
+
+<div id="_mainsearch">
+     <table width="100%" style='<?php if($n!=$gp) echo "display:none"; ?>' id="td<?php echo $n?>" border="0" cellspacing="1" cellpadding="1" bgcolor="#cfcfcf">
+      <tr align="center" bgcolor="#FBFCE2" height="25">
+       <td width="300">参数说明</td>
+       <td>参数值</td>
+       <td width="220">变量名</td>
+      </tr>
+
+      <tr align="center" height="25" bgcolor="#ffffff"><!--#F9FCEF<input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2>否 "-->
+       <td width="300">TAGS目录名：</td>
+       <td align="left" style="padding:3px;">
+       <input type='text' name='tag_basedir' id='cfg_tag_basedir' value='<?php echo empty($tag_basedir['value']) ? 'tag' : $tag_basedir['value'];?>' style='width:30%'>
+       </td>
+       <td>$cfg_tag_basedir</td>
+      </tr>
+	  
+	  <!--手机TAG目录设置-->
+	  <tr align="center" height="25" bgcolor="#ffffff"><!--#F9FCEF<input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2>否 "-->
+       <td width="300">手机TAGS目录名：</td>
+       <td align="left" style="padding:3px;">
+       <input type='text' name='tag_basedir_m' id='cfg_tag_basedir_m' value='<?php echo empty($tag_basedir_m['value']) ? '/m/tag' : $tag_basedir_m['value'];?>' style='width:30%'>
+       </td>
+       <td>$cfg_tag_basedir_m</td>
+      </tr>
+	  <!--手机TAG目录设置结束-->
+	  
+	  
+<tr align="center" height="25" bgcolor="#ffffff"><!--#F9FCEF<input type='radio' class='np' name='edit___{$row['varname']}' value='N'$c2>否 "-->
+       <td width="300">TAG链接样式：</td>
+       <td align="left" style="padding:3px;">       
+       <input type='radio' class='np' name='tag_style' value='1'<?php echo $tag_style['value'] == 1 ? ' checked="checked"' : '';?>>1:{拼音}
+       <input type='radio' class='np' name='tag_style' value='2'<?php echo $tag_style['value'] == 2 ? ' checked="checked"' : '';?>>2:{ID} 
+       <input type='radio' class='np' name='tag_style' value='3'<?php echo $tag_style['value'] == 3 ? ' checked="checked"' : '';?>>3:{拼音}.html 
+       <input type='radio' class='np' name='tag_style' value='4'<?php echo $tag_style['value'] == 4 ? ' checked="checked"' : '';?>>4:{ID}.html     
+       <input type='radio' class='np' name='tag_style' value='5'<?php echo $tag_style['value'] == 5 ? ' checked="checked"' : '';?>>5:ID
+       &nbsp&nbsp&nbsp&nbsp&nbsp建议PC和WAP统一样式，故没做区分,以后考虑升级
+       </td>
+       <td>$cfg_tag_style</td>
+      </tr>
+     </table>
+</div>
+     <table width="100%" border="0" cellspacing="1" cellpadding="1"  style="border:1px solid #cfcfcf;border-top:none;">
+      <tr bgcolor="#F9FCEF">
+       <td height="50" colspan="3"><table width="98%" border="0" cellspacing="1" cellpadding="1">
+         <tr>
+          <td width="20%">&nbsp;</td>
+          <td width="20%">&nbsp;</td>
+          <td width="48%"><input name="imageField" type="image" src="../images/button_ok.gif" width="60" height="22" border="0" class="np"></td>
+         </tr>
+        </table></td>
+      </tr>
+     </table>
+    </form></td>
+  </tr>
+ </table>
+</div>
+</body>
+</html>

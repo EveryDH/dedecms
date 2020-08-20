@@ -1,0 +1,2 @@
+INSERT INTO `dede_search_keywords` VALUES('1','转基因','转基因','4','2','1563519048','0','0');
+INSERT INTO `dede_search_keywords` VALUES('2','基因','基因','4','9','1563519466','0','0');

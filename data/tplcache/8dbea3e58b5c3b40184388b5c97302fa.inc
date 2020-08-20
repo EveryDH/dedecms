@@ -1,0 +1,2 @@
+<h2 style="display:inline"><span class="red">¡¾ÍÆ¼öÔÄ¶Á¡¿</span> <a href="[field:arcurl/]" title="[field:fulltitle/]">[field:title/]</a></h2>
+        <p class="note"> <a href="[field:arcurl/]" title="µã»÷ÔÄ¶Á£¨[field:title/]£©">[field:description function='cn_substr(@me,200)'/]...</a></p>

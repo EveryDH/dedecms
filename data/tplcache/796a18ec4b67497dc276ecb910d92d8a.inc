@@ -1,0 +1,2 @@
+<h2><span class="red">¡¾Õ¾³¤ÍÆ¼ö¡¿</span> <a href="[field:arcurl/]" title="[field:title/]-{dede:global.cfg_webname/}">[field:title/]</a></h2>
+        <p class="note"> <a href="[field:arcurl/]" title="µã»÷ÔÄ¶Á£¨[field:title/]£©">[field:description function='cn_substr(@me,200)'/]...</a></p>

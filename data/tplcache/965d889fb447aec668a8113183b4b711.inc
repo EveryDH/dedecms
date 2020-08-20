@@ -1,0 +1,2 @@
+<h2 style="display:inline"><span class="red">【推荐阅读】</span> <a href="[field:arcurl/]" title="[field:fulltitle/]">[field:title/]</a></h2>
+        <p class="note"> <a href="[field:arcurl/]" title="点击阅读（[field:title/]）">[field:description function='cn_substr(@me,200)'/]...</a></p>

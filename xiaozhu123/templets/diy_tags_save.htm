@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>自定义tag修改</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+function checkall(form, prefix, checkall)
+{
+	var checkall = checkall ? checkall : 'all';
+	for(var i = 0; i < form.elements.length; i++)
+	{
+		var e = form.elements[i];
+		if(e.name && e.name != checkall && (!prefix || (prefix && e.name.match(prefix))))
+		{
+			e.checked = form.elements[checkall].checked;
+		}
+	}
+}
+ 
+</script>
+</head>
+<style type="text/css">
+	.dian_form{
+		margin-left: 20px;
+		margin-top: 50px;
+       margin: 20px;
+    text-align: center;
+	}
+	.dian_a{
+		padding: 5px;
+		border: 1px solid #6b9e03;
+	}
+	.dian_a:hover{
+		background: #6b9e03;
+		color: #ffffff;
+	}
+  .btn{
+    padding: 6px 12px  !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+   background: #5cb85c !important;
+    border-color: #4cae4c !important;
+        display: block;
+    /* text-align: center; */
+    margin: 10px auto;
+   }
+   .btn:hover{
+   color: #fff;
+    background: #449d44  !important;
+    border-color: #398439  !important;
+   }
+  textarea {
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+</style>
+<body>
+<div class="bodytitle">
+	<div class="bodytitleleft"></div>
+	<div class="bodytitletxt" style="padding-left:10px;">tag修改</div>
+</div>
+<div class="main">
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="background:#CFCFCF;">
+    <tr>
+	    <td height="20" colspan="6" bgcolor="#F0FBBD" background="images/wbg.gif">
+	      	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+	          	<tr>
+	            	<td align="left" style="padding-left:10px;"><strong>修改</strong></td>
+	            	<td align="left" style="text-align: right;padding-right:10px;" ><a href="diy_tags.php?" class="dian_a">返回</a></td>
+	          	</tr>
+	      	</table>
+	  	</td>
+    </tr>
+</table>
+<form name='form3' action="diy_tags.php?action=update" method="post" class="dian_form">
+	<?php $ids = $_GET["ids"]; $key = $dsql->GetOne("SELECT * FROM `#@__diy_tags` WHERE d_id = '$ids' ");?>
+	<tr style="display: none;"> 
+	    <input name="d_id" type="text" id="email" value="<?php echo $key['d_id']?>" style="width:150px;display: none;" />
+	</tr>
+	<tr> 
+	    <td align="right" class='bline'>关键字：</td>
+	    <textarea name="title" style="margin: 0px; height: 126px; width: 600px;"><?php echo $key['title']?> </textarea>
+	</tr>
+	<tr>
+		<input tname="submit" type="submit" class="btn" name="" value="确定">
+	</tr>
+</form>
+
+</div>
+</body>
+</html>
+
