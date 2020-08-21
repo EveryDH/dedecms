@@ -16,6 +16,32 @@ if(isset($_SERVER['QUERY_STRING']))
     $tags = explode('/', $tag);
     if(isset($tags[1])) $tag = $tags[1];
     if(isset($tags[2])) $PageNo = intval($tags[2]);
+  	$tagid = intval($tag);
+  	if($tagid>0){
+    	 if(!empty($tagid))
+    {
+        $row = $dsql->GetOne("SELECT tag FROM `#@__tagindex` WHERE id = {$tagid}");
+        if(!is_array($row))
+        {
+           
+        }
+        else
+        {
+            $tag = $row['tag'];
+            define('DEDERETAG', 'Y');
+        }
+    }
+    else
+    {
+        $tag = '';
+    }
+    
+    }
+   
+  
+  
+  
+  
 }
 else
 {
