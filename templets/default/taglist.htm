@@ -87,13 +87,6 @@
 <a href="/tags-daxuesheng_5.html"><span class="page">ĩҳ</span></a>-->
         </ul>
       </div>
-      <div class="cygswtags tags">
-        <ul>
-          {dede:tag row='60' sort='rand' type='current'}
-          <li><a href="[field:link /]" target="_blank"><span style="font-size:1.[field:count/]em">[field:tag /]</span></a></li>
-          {/dede:tag}
-        </ul>
-      </div>
     </div>
   </div>
   <aside class="sidebar pc">
@@ -117,6 +110,13 @@
         </ul>
       </dd>
     </dl>
+    <div class="cygswtags tags">
+      <ul>
+        {dede:tag row='60' sort='rand' type='current'}
+        <li><a href="[field:link /]" target="_blank"><span style="font-size:1.[field:count/]em">[field:tag /]</span></a></li>
+        {/dede:tag}
+      </ul>
+    </div>
   </aside>
 </section>
 {dede:include filename="footer.htm"/}
