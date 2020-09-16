@@ -84,7 +84,7 @@ a.keywordlink {
       </div>
       <div class="cygswtags title" id="comments2">
         <ul>
-          {dede:tag row='50' sort='rand' type='all'} 
+          {dede:tag row='50' sort='rand' type='all'}
           <li><a href="[field:link /]" target="_blank"><span style="font-size:1.[field:count/]em">[field:tag /]</span></a></li>
           {/dede:tag}
         </ul>
@@ -118,6 +118,19 @@ a.keywordlink {
         </ul>
       </dd>
     </dl>
+    <article class="excerpttu">
+      <header>
+        <h1 class="listtag">{dede:field.title /}</h1>
+      </header>
+      <p class="note"> {dede:field name='description' function='html2text(@me)'/} </p>
+    </article>
+    <div class="cygswtags tags">
+      <ul>
+        {dede:tag row='100' sort='rand' type='current'}
+        <li><a href="[field:link /]" target="_blank"><span style="font-size:1.[field:count/]em">[field:tag /]</span></a></li>
+        {/dede:tag}
+      </ul>
+    </div>
   </aside>
 </section>
 <script type="text/javascript" src="/js/hight.js"></script>

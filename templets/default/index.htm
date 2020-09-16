@@ -60,10 +60,10 @@
 {dede:include filename="head.htm"/}
 <section class="container">
   <div class="content-wrap">
-    <div class="content"> 
-      
+    <div class="content">
+
       <!---->
-      <article class="excerpt-see excerpt-see-index"> 
+      <article class="excerpt-see excerpt-see-index">
         <h1 style="font-size:22px;display:inline;">{dede:global.cfg_webname/}</h1> {dede:arclist row='1' titlelen='50' flag='h' }<h2 style="display:inline"><span class="red">¡¾ÍÆ¼öÔÄ¶Á¡¿</span> <a href="[field:arcurl/]" title="[field:fulltitle/]">[field:title/]</a></h2>
         <p class="note"> <a href="[field:arcurl/]" title="µã»÷ÔÄ¶Á£¨[field:title/]£©">[field:description function='cn_substr(@me,200)'/]...</a></p>
         {/dede:arclist}
@@ -120,12 +120,12 @@
         </ul>
       </dd>
     </dl>
-    <div class="widget widget_ui_tags">
-      <div class="items">
-        <ul>
-          {dede:flinktype }{dede:flink/}{/dede:flinktype}
-        </ul>
-      </div>
+    <div class="cygswtags tags">
+      <ul>
+        {dede:tag row='100' sort='rand' type='current'}
+        <li><a href="[field:link /]" target="_blank"><span style="font-size:1.[field:count/]em">[field:tag /]</span></a></li>
+        {/dede:tag}
+      </ul>
     </div>
   </aside>
 </section>
