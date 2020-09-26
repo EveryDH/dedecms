@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
   <title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
   <meta name="keywords" content="{dede:field name='keywords'/}" />
-  <meta name="description" content="{dede:global.cfg_description/}" />
+  <meta name="description" content="{dede:field.title/}_{dede:global.cfg_description/}" />
   <link rel='stylesheet' href='/skins/css/style.css' type='text/css' media='all' />
   <link rel="canonical" href="{dede:global.cfg_basehost/}{dede:type typeid='0' row=1}[field:typelink/]{/dede:type}"/>
   <!--[if lt IE 9]><script src="/skins/js/html5.min.js"></script><![endif]-->
@@ -61,7 +61,7 @@
 <section class="container">
   <div class="content-wrap">
     <div class="content">
-      {dede:list pagesize='10'}
+      {dede:list pagesize='14'}
       <article class="excerpt"> <a class="focus" href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:title/]"/></a>
         <header><a href="[field:typeurl/]" class="cat" title="[field:typename/]">[field:typename/]</a>
           <h2><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a></h2>
@@ -77,6 +77,7 @@
           {dede:pagelist listitem="index,end,pre,next,pageno" listsize="1"/}
         </ul>
       </div>
+
     </div>
   </div>
   <aside class="sidebar">
