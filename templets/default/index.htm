@@ -12,6 +12,19 @@
   <meta name="keywords" content="{dede:global.cfg_keywords/}" />
   <link rel="canonical" href="{dede:global.cfg_basehost/}"/>
   <link rel='stylesheet' href='/skins/css/style.css' type='text/css' media='all' />
+  <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
+  <script>
+    function multi(pagenum,tagid)
+    {
+      var taget_obj = document.getElementById(tagid);
+      var taget_obj_page = document.getElementById("page_"+tagid);
+      myajax = new DedeAjax(taget_obj,false,false,'','','');
+      myajax.SendGet2("/plus/arcmulti.php?mtype=0&pnum="+pagenum+'&tagid='+tagid);
+      myajax = new DedeAjax(taget_obj_page,false,false,'','','');
+      myajax.SendGet2("/plus/arcmulti.php?mtype=1&pnum="+pagenum+'&tagid='+tagid);
+      DedeXHTTP = null;
+    }
+  </script>
   <!--[if lt IE 9]><script src="/skins/js/html5.min.js"></script><![endif]-->
   <style type="text/css">
     .header, .excerpt .cat, .now-page, .pagination span:hover, .pagination ul>li>a:focus {
@@ -61,7 +74,6 @@
 <section class="container">
   <div class="content-wrap">
     <div class="content">
-
       <!---->
       <article class="excerpt-see excerpt-see-index">
         <h1 style="font-size:22px;display:inline;">{dede:global.cfg_webname/}</h1> {dede:arclist row='1' titlelen='50' flag='h' }<h2 style="display:inline"><span class="red">¡¾ÍÆ¼öÔÄ¶Á¡¿</span> <a href="[field:arcurl/]" title="[field:fulltitle/]">[field:title/]</a></h2>
@@ -75,6 +87,7 @@
           </ul>
         </div>
       </article>
+
       {dede:arclist row=13 titlelen=50  }
       <article class="excerpt"> <a class="focus" href="[field:arcurl/]"><img src="[field:litpic/]" alt="[field:fulltitle/]"/></a>
         <header><a href="[field:typeurl/]" class="cat" title="[field:typename/]">[field:typename/]</a>
@@ -120,6 +133,12 @@
         </ul>
       </dd>
     </dl>
+    <article class="excerpttu">
+      <header>
+        <h1 class="listtag">{dede:global.cfg_indexname/}</h1>
+      </header>
+      <p class="note"> {dede:field name='description' function='html2text(@me)'/} </p>
+    </article>
     <div class="cygswtags tags">
       <ul>
         {dede:tag row='100' sort='rand' type='current'}

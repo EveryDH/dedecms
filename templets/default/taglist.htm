@@ -77,6 +77,17 @@
         <p class="note pc"> <a href="[field:arcurl/]" title="[field:title/]">[field:description function='cn_substr(@me,200)'/]...</a></p>
       </article>
       {/dede:list}
+      <DIV class="ads ads-post ads-post-02"> </DIV>
+      <div class="relates">
+        <div class="title" id="comments">
+          <h4>相关阅读</h4>
+        </div>
+        <ul>
+          {dede:arclist flag='c' titlelen=42 row=10}
+          <li class="tuijian554"><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a> <span class="sijian554">[field:click/]人看过</span></li>
+          {/dede:arclist}
+        </ul>
+      </div>
       <div class="pagination">
         <ul>
           {dede:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
