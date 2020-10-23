@@ -1,1 +1,6 @@
- 
+RewriteEngine on
+RewriteRule ^/tag/(.*) /tags.php?/$1/
+RewriteRule ^/tag/(.*)(?:(\?.*))* /tags.php?\/$1;
+RewriteRule ^/tag/(.*)\/(?:(\?.*))*  /tags.php?\/$1\/;
+RewriteRule ^/([0-9]+)$ /tags.php?\/$1\/$2;
+RewriteRule ^/([0-9])\/(?:(\?.*))*  /tags.php?\/$1\/$2\/;

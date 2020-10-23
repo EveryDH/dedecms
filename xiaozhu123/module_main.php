@@ -62,22 +62,22 @@ function SendData($hash = '',$type = 1)
     if(!empty($hash)){
         global $cfg_basehost;
         $str = "basehost=".$cfg_basehost."&hash=".$hash."&type=".$type;
-        $fp = fsockopen('www.dedecms.com',80,$errno,$errstr,30); 
+        $fp = fsockopen('www.dedecms.com',80,$errno,$errstr,30);
         if(!$fp)
         {
             return FALSE;
-        }else{ 
-            fputs($fp, "POST http://www.dedecms.com/plugin.php HTTP/1.1\r\n"); 
-            fputs($fp, "Host: www.dedecms.com\r\n"); 
-            fputs($fp, "Content-type: application/x-www-form-urlencoded\r\n"); 
-            fputs($fp, "Content-length: ".strlen($str)."\r\n"); 
-            fputs($fp, "Connection: close\r\n\r\n"); 
-            fputs($fp, $str."\r\n\r\n"); 
-            fclose($fp); 
+        }else{
+            fputs($fp, "POST http://www.dedecms.com/plugin.php HTTP/1.1\r\n");
+            fputs($fp, "Host: www.dedecms.com\r\n");
+            fputs($fp, "Content-type: application/x-www-form-urlencoded\r\n");
+            fputs($fp, "Content-length: ".strlen($str)."\r\n");
+            fputs($fp, "Connection: close\r\n\r\n");
+            fputs($fp, $str."\r\n\r\n");
+            fclose($fp);
         }
     }else{
-        return FALSE; 
-    }  
+        return FALSE;
+    }
 }
 /*--------------
 function ShowAll();
@@ -87,12 +87,12 @@ if($action=='')
     $types = array('soft'=>'模块','templets'=>'模板','plus'=>'小插件','patch'=>'补丁');
     $dm = new DedeModule($mdir);
     if(empty($moduletype)) $moduletype = '';
-	
-	$modules_remote = $dm->GetModuleUrlList($moduletype,$mdurl);
-	$modules = array();
-	$modules = $dm->GetModuleList($moduletype);
-	is_array($modules) || $modules = array();
-	$modules = array_merge($modules,$modules_remote);
+
+//	$modules_remote = $dm->GetModuleUrlList($moduletype,$mdurl);
+    $modules = array();
+    $modules = $dm->GetModuleList($moduletype);
+    is_array($modules) || $modules = array();
+//	$modules = array_merge($modules,$modules_remote);
     require_once(dirname(__FILE__)."/templets/module_main.htm");
     $dm->Clear();
     exit();
@@ -289,7 +289,7 @@ else if($action=='setupstart')
 
         $setupsql = preg_replace("#ENGINE=MyISAM#i", 'TYPE=MyISAM', $setupsql);
         $sql41tmp = 'ENGINE=MyISAM DEFAULT CHARSET='.$cfg_db_language;
-        
+
         if($mysql_version >= 4.1)
         {
             $setupsql = preg_replace("#TYPE=MyISAM#i", $sql41tmp, $setupsql);
@@ -299,7 +299,7 @@ else if($action=='setupstart')
         if($cfg_cmspath=='/') $cfg_cmspath = '';
 
         $rooturl = $cfg_basehost.$cfg_cmspath;
-        
+
         $setupsql = preg_replace("#_ROOTURL_#i", $rooturl, $setupsql);
         $setupsql = preg_replace("#[\r\n]{1,}#", "\n", $setupsql);
 
@@ -516,9 +516,9 @@ else if($action=='uninstallok')
                 if(trim($sql)!='') $dsql->ExecuteNoneQuery($sql);
             }
         }
-        
+
         ReWriteConfigAuto();
-        
+
         $rflwft = "<script language='javascript' type='text/javascript'>\r\n";
         $rflwft .= "if(window.navigator.userAgent.indexOf('MSIE')>=1) top.document.frames.menu.location = 'index_menu_module.php';\r\n";
         $rflwft .= "else top.document.getElementById('menufra').src = 'index_menu_module.php';\r\n";
@@ -569,7 +569,7 @@ else if($action=='view')
         else $v['type'] = '文件';
         $filelist .= "{$v['type']}|{$v['name']}\r\n";
     }
-    if(file_exists(DEDEDATA."/module/{$hash}-readme.php")) 
+    if(file_exists(DEDEDATA."/module/{$hash}-readme.php"))
     {
         $setupinfo = "已安装 <a href='module_main.php?action=uninstall&hash={$hash}'>卸载</a>";
     } else {
@@ -653,7 +653,7 @@ else if($action=='edit')
     $filelist = $dm->GetSystemFile($hash,'oldfilelist',false);
     $indexurl = str_replace('**', '=', $indexurl);
     $dm->Clear();
-    
+
     require_once(dirname(__FILE__).'/templets/module_edit.htm');
     exit();
 }
@@ -662,8 +662,8 @@ function Download();
 --------------*/
 else if($action=='download')
 {
-	$model_remote_url = UPDATEHOST.'dedecms/module_'.$cfg_soft_lang.'/'.$hash.'.xml';
-	$model_remote = file_get_contents($model_remote_url);
-	file_put_contents($mdir.'/'.$hash.'.xml',$model_remote);
-	echo "未安装 <a href='module_main.php?action=setup&hash={$hash}'><u>安装</u></a>";
+    $model_remote_url = UPDATEHOST.'dedecms/module_'.$cfg_soft_lang.'/'.$hash.'.xml';
+    $model_remote = file_get_contents($model_remote_url);
+    file_put_contents($mdir.'/'.$hash.'.xml',$model_remote);
+    echo "未安装 <a href='module_main.php?action=setup&hash={$hash}'><u>安装</u></a>";
 }
